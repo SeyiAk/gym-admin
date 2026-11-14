@@ -1,0 +1,73 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("./assets/fonts/DMSans-Variable.woff2") format("woff2-variations");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Colours are the Figma "Colour/Black/*" styles plus the brand green and status hues. */
+@theme {
+  --font-brand: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-brand);
+
+  --color-appPrimary: #acf699;
+  --color-appPrimarySoft: rgb(172 246 153 / 0.13);
+  --color-appPrimaryInk: #181a1d;
+  --color-navActive: #222d27;
+
+  --color-page: #181a1d; /* black-900 */
+  --color-surface: #1f2227; /* black-800 */
+  --color-line: #282c32; /* black-700 */
+  --color-muted: #a4a6aa; /* black-200 */
+  --color-subtle: #61656b; /* black-400 */
+  --color-soft: #ebeced; /* black-50 */
+
+  --color-info: #3b82f6;
+  --color-danger: #eb5757;
+  --color-warning: #f2c94c;
+  --color-violet: #a78bfa;
+}
+
+/*
+ * The designs are drawn on a ~1886px canvas. Scaling the root font size with the viewport keeps
+ * every rem-based size proportional to the Figma frames: 16px at full width, never below 12px.
+ */
+html {
+  font-size: clamp(12px, 0.85vw, 16px);
+  color-scheme: dark;
+}
+
+@layer base {
+  body {
+    @apply bg-page text-white font-brand antialiased;
+    font-optical-sizing: auto;
+  }
+
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-line);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 8px;
+}
+
+@layer utilities {
+  .card {
+    @apply bg-surface border border-line rounded-2xl;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
